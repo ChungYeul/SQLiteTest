@@ -30,6 +30,18 @@
     NSFileManager *fm = [NSFileManager defaultManager];
     BOOL existFile = [fm fileExistsAtPath:dbFilePath];
     
+    // copy해야하는 이유는.. 복사를 하지않으면 읽기전용으로 불려오기때문에..
+    if (existFile == NO) {
+        NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"db.sqlite"];
+        NSError *error;
+        BOOL success = [fm copyItemAtPath:defaultDBPath toPath:dbFilePath error:&error];
+        
+        if (!success) {
+            NSAssert1(0, @"Failed to create writable database file with message '%@'.", [error localizedDescription]);
+        }
+    }
+    //
+    
     // 데이터 베이스 오픈
     int ret = sqlite3_open([dbFilePath UTF8String], &db);
     NSAssert1(SQLITE_OK == ret, @"Error on opening Database : %s", sqlite3_errmsg(db));
