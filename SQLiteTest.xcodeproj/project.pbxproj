@@ -21,6 +21,8 @@
 		00F816041883D5E50093E26D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F815E61883D5E50093E26D /* UIKit.framework */; };
 		00F8160C1883D5E50093E26D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00F8160A1883D5E50093E26D /* InfoPlist.strings */; };
 		00F8160E1883D5E50093E26D /* SQLiteTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F8160D1883D5E50093E26D /* SQLiteTestTests.m */; };
+		00F816181883DCA10093E26D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F816171883DCA10093E26D /* libsqlite3.dylib */; };
+		00F8161B1883E0F80093E26D /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F8161A1883E0F80093E26D /* Movie.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,9 @@
 		00F816091883D5E50093E26D /* SQLiteTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SQLiteTestTests-Info.plist"; sourceTree = "<group>"; };
 		00F8160B1883D5E50093E26D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		00F8160D1883D5E50093E26D /* SQLiteTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SQLiteTestTests.m; sourceTree = "<group>"; };
+		00F816171883DCA10093E26D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		00F816191883E0F80093E26D /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
+		00F8161A1883E0F80093E26D /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00F816181883DCA10093E26D /* libsqlite3.dylib in Frameworks */,
 				00F815E51883D5E50093E26D /* CoreGraphics.framework in Frameworks */,
 				00F815E71883D5E50093E26D /* UIKit.framework in Frameworks */,
 				00F815E31883D5E50093E26D /* Foundation.framework in Frameworks */,
@@ -101,6 +107,7 @@
 		00F815E11883D5E50093E26D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00F816171883DCA10093E26D /* libsqlite3.dylib */,
 				00F815E21883D5E50093E26D /* Foundation.framework */,
 				00F815E41883D5E50093E26D /* CoreGraphics.framework */,
 				00F815E61883D5E50093E26D /* UIKit.framework */,
@@ -119,6 +126,8 @@
 				00F815F81883D5E50093E26D /* ViewController.m */,
 				00F815FA1883D5E50093E26D /* Images.xcassets */,
 				00F815E91883D5E50093E26D /* Supporting Files */,
+				00F816191883E0F80093E26D /* Movie.h */,
+				00F8161A1883E0F80093E26D /* Movie.m */,
 			);
 			path = SQLiteTest;
 			sourceTree = "<group>";
@@ -251,6 +260,7 @@
 			files = (
 				00F815F91883D5E50093E26D /* ViewController.m in Sources */,
 				00F815F31883D5E50093E26D /* AppDelegate.m in Sources */,
+				00F8161B1883E0F80093E26D /* Movie.m in Sources */,
 				00F815EF1883D5E50093E26D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
