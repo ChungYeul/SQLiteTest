@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		00B53F451884D7A500D37F6A /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 00B53F441884D7A500D37F6A /* db.sqlite */; };
+		00B53F481884FD6200D37F6A /* ActorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B53F471884FD6200D37F6A /* ActorViewController.m */; };
+		00B53F4B188502CF00D37F6A /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B53F4A188502CF00D37F6A /* Actor.m */; };
+		00B53F4E1885138100D37F6A /* MovieCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B53F4D1885138100D37F6A /* MovieCenter.m */; };
 		00F815E31883D5E50093E26D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F815E21883D5E50093E26D /* Foundation.framework */; };
 		00F815E51883D5E50093E26D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F815E41883D5E50093E26D /* CoreGraphics.framework */; };
 		00F815E71883D5E50093E26D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F815E61883D5E50093E26D /* UIKit.framework */; };
@@ -38,6 +41,12 @@
 
 /* Begin PBXFileReference section */
 		00B53F441884D7A500D37F6A /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
+		00B53F461884FD6200D37F6A /* ActorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActorViewController.h; sourceTree = "<group>"; };
+		00B53F471884FD6200D37F6A /* ActorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActorViewController.m; sourceTree = "<group>"; };
+		00B53F49188502CF00D37F6A /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Actor.h; sourceTree = "<group>"; };
+		00B53F4A188502CF00D37F6A /* Actor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Actor.m; sourceTree = "<group>"; };
+		00B53F4C1885138100D37F6A /* MovieCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCenter.h; sourceTree = "<group>"; };
+		00B53F4D1885138100D37F6A /* MovieCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCenter.m; sourceTree = "<group>"; };
 		00F815DF1883D5E50093E26D /* SQLiteTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SQLiteTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00F815E21883D5E50093E26D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		00F815E41883D5E50093E26D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -127,10 +136,16 @@
 				00F815F41883D5E50093E26D /* Main.storyboard */,
 				00F815F71883D5E50093E26D /* ViewController.h */,
 				00F815F81883D5E50093E26D /* ViewController.m */,
+				00B53F461884FD6200D37F6A /* ActorViewController.h */,
+				00B53F471884FD6200D37F6A /* ActorViewController.m */,
 				00F815FA1883D5E50093E26D /* Images.xcassets */,
 				00F815E91883D5E50093E26D /* Supporting Files */,
 				00F816191883E0F80093E26D /* Movie.h */,
 				00F8161A1883E0F80093E26D /* Movie.m */,
+				00B53F49188502CF00D37F6A /* Actor.h */,
+				00B53F4A188502CF00D37F6A /* Actor.m */,
+				00B53F4C1885138100D37F6A /* MovieCenter.h */,
+				00B53F4D1885138100D37F6A /* MovieCenter.m */,
 			);
 			path = SQLiteTest;
 			sourceTree = "<group>";
@@ -264,8 +279,11 @@
 			files = (
 				00F815F91883D5E50093E26D /* ViewController.m in Sources */,
 				00F815F31883D5E50093E26D /* AppDelegate.m in Sources */,
+				00B53F481884FD6200D37F6A /* ActorViewController.m in Sources */,
+				00B53F4B188502CF00D37F6A /* Actor.m in Sources */,
 				00F8161B1883E0F80093E26D /* Movie.m in Sources */,
 				00F815EF1883D5E50093E26D /* main.m in Sources */,
+				00B53F4E1885138100D37F6A /* MovieCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

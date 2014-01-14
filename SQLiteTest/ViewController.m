@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <sqlite3.h>
 #import "Movie.h"
+#import "ActorViewController.h"
 
 @interface ViewController ()<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *table;
@@ -53,6 +54,15 @@
         // 테이블 생성
         const char *createSQL = "CREATE TABLE IF NOT EXISTS MOVIE (TITLE TEXT)";
         char *errorMsg;
+        ret = sqlite3_exec(db, createSQL, NULL, NULL, &errorMsg);
+        if (ret != SQLITE_OK) {
+            [fm removeItemAtPath:dbFilePath error:nil];
+            NSAssert1(SQLITE_OK == ret, @"Error on creating : %s", errorMsg);
+            NSLog(@"creating table with ret : %d", ret);
+        }
+        
+        // 테이블 생성2
+        createSQL = "CREATE TABLE IF NOT EXISTS ACTOR (ACTOR TEXT, MOVIE_ID INT)";
         ret = sqlite3_exec(db, createSQL, NULL, NULL, &errorMsg);
         if (ret != SQLITE_OK) {
             [fm removeItemAtPath:dbFilePath error:nil];
@@ -179,15 +189,23 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Movie *movie = [data objectAtIndex:indexPath.row];
-    _currentRowID = movie.rowID;
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"영화명 변경" message:@"변경할 제목을 입력하세요" delegate:self cancelButtonTitle:@"취소" otherButtonTitles:@"확인", nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [alert textFieldAtIndex:0].text = movie.title;
-    [alert show];
+//    Movie *movie = [data objectAtIndex:indexPath.row];
+//    _currentRowID = movie.rowID;
+//    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"영화명 변경" message:@"변경할 제목을 입력하세요" delegate:self cancelButtonTitle:@"취소" otherButtonTitles:@"확인", nil];
+//    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    [alert textFieldAtIndex:0].text = movie.title;
+//    [alert show];
 }
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    ActorViewController *actorVC = segue.destinationViewController;
+    
+    // 현재 테이블에 IndexPath 받아오기
+    NSIndexPath *indexPath = [self.table indexPathForCell:sender];
+    Movie *movie = [data objectAtIndex:indexPath.row];
+    actorVC.movieID = movie.rowID;
+    actorVC.db = db;
+}
 //
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.firstOtherButtonIndex == buttonIndex) {
@@ -207,8 +225,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self resolveData];
+    self.navigationController.navigationBarHidden = YES;
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = NO;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
