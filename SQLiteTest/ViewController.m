@@ -118,8 +118,15 @@
 
 // 제목 수정
 - (void)updateData:(NSString *)name {
+    // 현재 테이블에 IndexPath 받아오기
+    NSIndexPath *path = [self.table indexPathForSelectedRow];
+    Movie *movie = [data objectAtIndex:path.row];
+    
     // sqlite3_exec 로 실행하기
-    NSString *sql = [NSString stringWithFormat:@"UPDATE MOVIE SET title = '%@' WHERE rowid = %d", name, _currentRowID];
+    // 인스턴스 변수 사용 안하고 짜기
+    NSString *sql = [NSString stringWithFormat:@"UPDATE MOVIE SET title = '%@' WHERE rowid = %d", name, movie.rowID];
+    // 인스턴스 변수 사용
+//    NSString *sql = [NSString stringWithFormat:@"UPDATE MOVIE SET title = '%@' WHERE rowid = %d", name, _currentRowID];
     NSLog(@"sql : %@", sql);
     
     char *errMsg;
@@ -161,6 +168,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [data count];
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CELL_ID" forIndexPath:indexPath];
     
@@ -188,6 +196,7 @@
         [self updateData:userInput];
     }
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -199,6 +208,7 @@
     [super viewWillAppear:animated];
     [self resolveData];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
