@@ -10,7 +10,7 @@
 #import <sqlite3.h>
 #import "Movie.h"
 
-@interface ViewController ()<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface ViewController ()<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
 @end
@@ -18,6 +18,7 @@
 @implementation ViewController {
     NSMutableArray *data;
     sqlite3 *db;
+    int _currentRowID;
 }
 
 // 데이터베이스 오픈, 없으면 새로 만든다
@@ -115,6 +116,22 @@
     [self.table reloadData];
 }
 
+// 제목 수정
+- (void)updateData:(NSString *)name {
+    // sqlite3_exec 로 실행하기
+    NSString *sql = [NSString stringWithFormat:@"UPDATE MOVIE SET title = '%@' WHERE rowid = %d", name, _currentRowID];
+    NSLog(@"sql : %@", sql);
+    
+    char *errMsg;
+    int ret = sqlite3_exec(db, [sql UTF8String], NULL, nil, &errMsg);
+    
+    if (SQLITE_OK != ret) {
+        NSLog(@"Error on Insert New data : %s", errMsg);
+    }
+    
+    [self resolveData];
+}
+
 //
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if ([textField.text length] > 1) {
@@ -125,6 +142,7 @@
     return YES;
 }
 
+//
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (UITableViewCellEditingStyleDelete == editingStyle) {
         Movie *one = [data objectAtIndex:indexPath.row];
@@ -152,6 +170,24 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Movie *movie = [data objectAtIndex:indexPath.row];
+    _currentRowID = movie.rowID;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"영화명 변경" message:@"변경할 제목을 입력하세요" delegate:self cancelButtonTitle:@"취소" otherButtonTitles:@"확인", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert textFieldAtIndex:0].text = movie.title;
+    [alert show];
+}
+
+//
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView.firstOtherButtonIndex == buttonIndex) {
+        UITextField *textField = [alertView textFieldAtIndex:0];
+        NSString *userInput = textField.text;
+        [self updateData:userInput];
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

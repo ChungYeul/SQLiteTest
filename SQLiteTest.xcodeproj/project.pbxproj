@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00B53F451884D7A500D37F6A /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 00B53F441884D7A500D37F6A /* db.sqlite */; };
 		00F815E31883D5E50093E26D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F815E21883D5E50093E26D /* Foundation.framework */; };
 		00F815E51883D5E50093E26D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F815E41883D5E50093E26D /* CoreGraphics.framework */; };
 		00F815E71883D5E50093E26D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F815E61883D5E50093E26D /* UIKit.framework */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00B53F441884D7A500D37F6A /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
 		00F815DF1883D5E50093E26D /* SQLiteTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SQLiteTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00F815E21883D5E50093E26D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		00F815E41883D5E50093E26D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -119,6 +121,7 @@
 		00F815E81883D5E50093E26D /* SQLiteTest */ = {
 			isa = PBXGroup;
 			children = (
+				00B53F441884D7A500D37F6A /* db.sqlite */,
 				00F815F11883D5E50093E26D /* AppDelegate.h */,
 				00F815F21883D5E50093E26D /* AppDelegate.m */,
 				00F815F41883D5E50093E26D /* Main.storyboard */,
@@ -240,6 +243,7 @@
 				00F815FB1883D5E50093E26D /* Images.xcassets in Resources */,
 				00F815ED1883D5E50093E26D /* InfoPlist.strings in Resources */,
 				00F815F61883D5E50093E26D /* Main.storyboard in Resources */,
+				00B53F451884D7A500D37F6A /* db.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +474,7 @@
 				00F816131883D5E50093E26D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		00F816141883D5E50093E26D /* Build configuration list for PBXNativeTarget "SQLiteTestTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +483,7 @@
 				00F816161883D5E50093E26D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
